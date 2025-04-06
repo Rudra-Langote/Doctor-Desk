@@ -145,11 +145,9 @@ export default function HomePage() {
           <Logo value={2} />
 
           <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
-            <a href="#" className="hover:underline hover:text-[#F4A261] transition duration-300">Home</a>
+            <Link to="/" className="hover:underline hover:text-[#F4A261] transition duration-300">Home</Link>
             <Link to="/about" className="hover:underline hover:text-[#F4A261] transition duration-300">About</Link>
-            <a href="#" className="hover:underline hover:text-[#F4A261] transition duration-300">Services</a>
-            <a href="#" className="hover:underline hover:text-[#F4A261] transition duration-300">Specialists</a>
-            <a href="#" className="hover:underline hover:text-[#F4A261] transition duration-300">Terms & Conditions</a>
+          
           </div>
 
           <p className="text-xs text-[#212529] text-center mt-4">

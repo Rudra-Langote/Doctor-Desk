@@ -43,11 +43,11 @@ export default function LoginPage() {
 
       const data = await response.json();
 
-      if (formData.userID.length == 8) {
+      if (formData.userID.length === 8) {
         Cookies.set("doctor_token", data, { expires: 7 });
-      } else if (formData.userID.length == 9) {
+      } else if (formData.userID.length === 9) {
         Cookies.set("userData", data, { expires: 7 });
-      } else if (formData.userID.length == 6) {
+      } else if (formData.userID.length === 6) {
         Cookies.set("hospitalName", data, { expires: 7 });
       }
 

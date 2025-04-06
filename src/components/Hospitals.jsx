@@ -3,20 +3,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import DoctorCard from "./DoctorCard"; // Make sure this file exists
 
-const dummyDoctors = [
-  {
-    id: 1,
-    name: "Dr. Priya Sharma",
-    specialization: "Cardiologist",
-    photo: "https://randomuser.me/api/portraits/women/44.jpg",
-  },
-  {
-    id: 2,
-    name: "Dr. Raj Patel",
-    specialization: "Orthopedic",
-    photo: "https://randomuser.me/api/portraits/men/56.jpg",
-  },
-];
+
 
 export default function Hospitals() {
   const [searchTerm, setSearchTerm] = useState("");

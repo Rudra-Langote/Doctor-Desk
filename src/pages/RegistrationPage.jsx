@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 
 export default function RegistrationPage() {
   const [activeTab, setActiveTab] = useState("client");
-  const [logo, setLogo] = useState(null);
+  
   const navigate = useNavigate(); 
 
   useEffect(() => {
