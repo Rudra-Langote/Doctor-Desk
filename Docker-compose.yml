@@ -1,0 +1,6 @@
+services:
+  doctordesk:
+    image: rudralangote/doctordesk:app
+    container_name: doctordesk_app
+    ports:
+      - "80:80" 
