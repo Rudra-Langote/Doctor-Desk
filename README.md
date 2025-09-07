@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+# Doctor-Desk 🩺
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Doctor-Desk is a web application for doctor appointment management, seamlessly deployed on a remote server with CI/CD automation. The project uses Jenkins pipelines, Docker, and Docker Compose for scalable, reliable, and repeatable production deployments.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **React Frontend**: Modern UI built with Create React App.
+- **CI/CD Automation**: Deployments triggered by GitHub push using Jenkins.
+- **Containerization**: Efficient multi-stage Docker build, served with Nginx.
+- **Orchestration**: Docker Compose manages containers and networking.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technology Stack
 
-### `npm test`
+- **Frontend**: React (JavaScript, HTML)
+- **Containers**: Docker, Docker Compose
+- **Web Server**: Nginx
+- **Automation**: Jenkins Pipeline
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Deployment Workflow
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The Jenkins pipeline automates the following steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone Repository**: Fetches the latest source code from GitHub.
+2. **Build Docker Image**: Uses a multi-stage Dockerfile to build and package the React app in an Nginx container.
+3. **Publish Image**: Tags and uploads the final image to Docker Hub.
+4. **Run Container**: Initializes the container using docker-compose for easy deployment and updates.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Sample Jenkins Steps:**
+Clone repository from GitHub
+git clone https://github.com/Rudra-Langote/Doctor-Desk.git
 
-### `npm run eject`
+Build Docker image
+docker build -t doctordesk:app .
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Tag and push image
+docker tag doctordesk:app rudralangote/doctordesk:app
+docker push rudralangote/doctordesk:app
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Deploy with Docker Compose
+docker-compose up -d
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Getting Started
 
-## Learn More
+### Prerequisites
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Docker & Docker Compose installed
+- Jenkins server (optional for manual deployment)
+- Node.js (for local development)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Local Development
 
-### Code Splitting
+Install dependencies
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Start development server
+npm start
 
-### Analyzing the Bundle Size
+Visit [http://localhost:3000](http://localhost:3000) to view the app.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Production Build
 
-### Making a Progressive Web App
+npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Generated files are found in the `build/` directory.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Docker Deployment
 
-### Deployment
+Build and run the container:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+docker build -t doctordesk:app .
+docker run -p 80:80 doctordesk:app
 
-### `npm run build` fails to minify
+Or use Docker Compose:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+docker-compose up -d
+
+---
+
+## CI/CD Pipeline (Jenkins)
+
+The Jenkinsfile covers:
+
+- GitHub repo cloning
+- Docker image build from Dockerfile
+- Push image to Docker Hub
+- Start container with Docker Compose
+
+Typical logs include details on cloning, building, pushing, and bringing up containers. Troubleshoot errors using pipeline output.
+
+---
+
+## Troubleshooting
+
+- Ensure Docker, Docker Compose, and Jenkins have adequate permissions.
+- Update Node and dependencies to resolve build warnings.
+- Consult pipeline logs for diagnostic details.
+
+---
+
+**Contributions and PRs are welcome!**  
+Feel free to fork, modify, and deploy Doctor-Desk for your team or organization.
